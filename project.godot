@@ -14,6 +14,12 @@ config/name="Adventure 2D"
 run/main_scene="res://Scenes/main_menu_scene.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
 [input]
 
 Up={

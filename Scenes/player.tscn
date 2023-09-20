@@ -1,7 +1,7 @@
 [gd_scene load_steps=48 format=3 uid="uid://bi3cb6c3xneeg"]
 
 [ext_resource type="Texture2D" uid="uid://tfcd34eq5lg7" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Idle (32x32).png" id="1_87in4"]
-[ext_resource type="Script" path="res://Scenes/player_movement.gd" id="1_a555q"]
+[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_cl2kq"]
 [ext_resource type="Texture2D" uid="uid://cw35fbed08cgh" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Fall (32x32).png" id="1_w7khp"]
 [ext_resource type="Texture2D" uid="uid://bvw71igyrmu5t" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Hit (32x32).png" id="2_10ve4"]
 [ext_resource type="Texture2D" uid="uid://b5bd8wb52xbhu" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Jump (32x32).png" id="4_nqi8u"]
@@ -202,7 +202,7 @@ animations = [{
 "speed": 25.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("4_nqi8u")
 }],
 "loop": true,
@@ -210,7 +210,7 @@ animations = [{
 "speed": 20.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_2uvdf")
 }, {
 "duration": 1.0,
@@ -257,6 +257,66 @@ height = 50.0
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_clwhp"]
 
+[sub_resource type="Animation" id="Animation_qini2"]
+resource_name = "Death"
+
+[sub_resource type="Animation" id="Animation_5hycl"]
+resource_name = "Fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Fall"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_r6t4q"]
+resource_name = "Hit"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
 [sub_resource type="Animation" id="Animation_p6tmb"]
 resource_name = "Idle"
 loop_mode = 1
@@ -271,6 +331,61 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_cs324"]
+resource_name = "Jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vil2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -314,45 +429,6 @@ tracks/1/keys = {
 "values": [&"Walk"]
 }
 
-[sub_resource type="Animation" id="Animation_cs324"]
-resource_name = "Jump"
-
-[sub_resource type="Animation" id="Animation_5hycl"]
-resource_name = "Fall"
-
-[sub_resource type="Animation" id="Animation_r6t4q"]
-resource_name = "Hit"
-
-[sub_resource type="Animation" id="Animation_qini2"]
-resource_name = "Death"
-
-[sub_resource type="Animation" id="Animation_vil2s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b15lr"]
 _data = {
 "Death": SubResource("Animation_qini2"),
@@ -365,7 +441,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_a555q")
+script = ExtResource("1_cl2kq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -381,6 +457,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
+speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_b15lr")
 }

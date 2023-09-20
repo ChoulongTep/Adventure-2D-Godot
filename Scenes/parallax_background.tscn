@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bklxq2j1ao4st"]
+
+[ext_resource type="Script" path="res://Scripts/parallax_background.gd" id="1_2hajp"]
+[ext_resource type="Texture2D" uid="uid://bep801xu3top5" path="res://Assets/Pixal Adventure/Background/Brown.png" id="1_5c84m"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_2hajp")
+
+[node name="ParallaxLayer - BG" type="ParallaxLayer" parent="."]
+position = Vector2(-960, -541)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Brown" type="Sprite2D" parent="ParallaxLayer - BG"]
+texture_filter = 1
+position = Vector2(960, 540.5)
+scale = Vector2(30, 16.8594)
+texture = ExtResource("1_5c84m")
+region_rect = Rect2(-324, -153.5, 124, 78)
+
+[node name="Camera2D" type="Camera2D" parent="."]
