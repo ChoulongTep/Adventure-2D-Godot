@@ -7,14 +7,17 @@
 script = ExtResource("1_2hajp")
 
 [node name="ParallaxLayer - BG" type="ParallaxLayer" parent="."]
-position = Vector2(-960, -541)
+position = Vector2(-4, 4)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Brown" type="Sprite2D" parent="ParallaxLayer - BG"]
-texture_filter = 1
-position = Vector2(960, 540.5)
-scale = Vector2(30, 16.8594)
+position = Vector2(-474.5, -26)
+scale = Vector2(29.9219, 16.8125)
 texture = ExtResource("1_5c84m")
-region_rect = Rect2(-324, -153.5, 124, 78)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-425, 8)
+limit_left = -480
+limit_top = -560
+limit_right = 480
+limit_bottom = 195
