@@ -1,0 +1,160 @@
+[gd_scene load_steps=17 format=3 uid="uid://b4i46ifq0sq6o"]
+
+[ext_resource type="Texture2D" uid="uid://c6rrbunwlhmmw" path="res://Assets/Pixal Adventure/Traps/Saw/On (38x38).png" id="1_mqcmw"]
+[ext_resource type="Script" path="res://Scripts/Traps/trap_saw.gd" id="1_pjqih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kruve"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqpft"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16vjb"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hass5"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sba3i"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phu00"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wptr"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31wsp"]
+atlas = ExtResource("1_mqcmw")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aj1sm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kruve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqpft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16vjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hass5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sba3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phu00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wptr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31wsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_h7yfn"]
+
+[sub_resource type="Animation" id="Animation_vqe7d"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_yd5jv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnr88"]
+_data = {
+"Idle": SubResource("Animation_vqe7d"),
+"RESET": SubResource("Animation_yd5jv")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bupy5"]
+radius = 17.0294
+
+[node name="Trap - Saw" type="Node2D"]
+script = ExtResource("1_pjqih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aj1sm")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationRootNode_h7yfn")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_pnr88")
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=["Trap_Saw"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bupy5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

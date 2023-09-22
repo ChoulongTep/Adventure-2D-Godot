@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bi3cb6c3xneeg"]
+[gd_scene load_steps=49 format=3 uid="uid://bi3cb6c3xneeg"]
 
 [ext_resource type="Texture2D" uid="uid://tfcd34eq5lg7" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Idle (32x32).png" id="1_87in4"]
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_cl2kq"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bvw71igyrmu5t" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Hit (32x32).png" id="2_10ve4"]
 [ext_resource type="Texture2D" uid="uid://b5bd8wb52xbhu" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Jump (32x32).png" id="4_nqi8u"]
 [ext_resource type="Texture2D" uid="uid://cu04xixxor1vo" path="res://Assets/Pixal Adventure/Main Characters/Virtual Guy/Run (32x32).png" id="5_kor0d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruh8f"]
+radius = 9.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhtv2"]
 atlas = ExtResource("2_10ve4")
@@ -251,9 +255,6 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fcsn0"]
-height = 24.0
-
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_clwhp"]
 
 [sub_resource type="Animation" id="Animation_qini2"]
@@ -439,17 +440,21 @@ _data = {
 "Walk": SubResource("Animation_mnx86")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swbj7"]
+radius = 9.0
+height = 24.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cl2kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_ruh8f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ry52l")
 animation = &"Idle"
 frame = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 4)
-shape = SubResource("CapsuleShape2D_fcsn0")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_clwhp")
@@ -468,3 +473,11 @@ limit_left = -480
 limit_top = -328
 limit_right = 480
 limit_bottom = 195
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_swbj7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
