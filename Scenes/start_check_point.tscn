@@ -1,8 +1,70 @@
-[gd_scene load_steps=21 format=3 uid="uid://1flsxc6pb5bj"]
+[gd_scene load_steps=24 format=3 uid="uid://1flsxc6pb5bj"]
 
 [ext_resource type="Texture2D" uid="uid://c8awphl6o6s0w" path="res://Assets/Pixal Adventure/Items/Checkpoints/Start/Start (Moving) (64x64).png" id="1_8wx02"]
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_ex5gp"]
+
+[sub_resource type="Animation" id="Animation_amdgj"]
+resource_name = "Idle"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_hfvbf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulj2k"]
+_data = {
+"Idle": SubResource("Animation_amdgj"),
+"RESET": SubResource("Animation_hfvbf")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h00k0"]
 atlas = ExtResource("1_8wx02")
@@ -131,14 +193,18 @@ animations = [{
 "speed": 25.0
 }]
 
-[node name="CheckPoint" type="Node2D"]
+[node name="Start_CheckPoint" type="Node2D"]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_ex5gp")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+speed_scale = 1.2
+libraries = {
+"": SubResource("AnimationLibrary_ulj2k")
+}
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kmxl5")
-frame_progress = 0.728585

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://w3c2tw2rxpp7"]
+[gd_scene load_steps=8 format=3 uid="uid://w3c2tw2rxpp7"]
 
 [ext_resource type="PackedScene" uid="uid://bi3cb6c3xneeg" path="res://Scenes/player.tscn" id="1_4fidr"]
 [ext_resource type="Texture2D" uid="uid://balbxtxsncfxd" path="res://Assets/Pixal Adventure/Terrain/Terrain (16x16).png" id="2_3cpg1"]
 [ext_resource type="Texture2D" uid="uid://bep801xu3top5" path="res://Assets/Pixal Adventure/Background/Brown.png" id="3_0ohgv"]
+[ext_resource type="PackedScene" uid="uid://1flsxc6pb5bj" path="res://Scenes/start_check_point.tscn" id="4_m413r"]
+[ext_resource type="PackedScene" uid="uid://ijlnu52ifu8m" path="res://Scenes/end_check_point.tscn" id="5_e0vmf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5wqu"]
 texture = ExtResource("2_3cpg1")
@@ -541,7 +543,7 @@ metadata/_edit_horizontal_guides_ = [-328.0]
 
 [node name="Player" parent="." instance=ExtResource("1_4fidr")]
 z_index = 100
-position = Vector2(1, 68)
+position = Vector2(-381, 87)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 8)
@@ -556,3 +558,10 @@ position = Vector2(-1.50005, -60.5)
 scale = Vector2(14.9531, 8.89063)
 texture = ExtResource("3_0ohgv")
 metadata/_edit_lock_ = true
+
+[node name="Start_CheckPoint" parent="." instance=ExtResource("4_m413r")]
+position = Vector2(-390, 72)
+
+[node name="End_Checkpoint" parent="." instance=ExtResource("5_e0vmf")]
+position = Vector2(57, -240)
+scale = Vector2(0.76, 0.76)
