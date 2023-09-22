@@ -1,0 +1,144 @@
+[gd_scene load_steps=21 format=3 uid="uid://bpvw4v2ulmhn8"]
+
+[ext_resource type="Texture2D" uid="uid://c8awphl6o6s0w" path="res://Assets/Pixal Adventure/Items/Checkpoints/Start/Start (Moving) (64x64).png" id="1_8wx02"]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_ex5gp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h00k0"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv2av"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olcor"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjfe5"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb1ej"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gjjs"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yebps"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw320"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qedlq"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwc5o"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1bih"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnch3"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vby4"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj067"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8g5l"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ko2"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_628t7"]
+atlas = ExtResource("1_8wx02")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmxl5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h00k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv2av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olcor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjfe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb1ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gjjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yebps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw320")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qedlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwc5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1bih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnch3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vby4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj067")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8g5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4ko2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_628t7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[node name="CheckPoint" type="Node2D"]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationRootNode_ex5gp")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kmxl5")
+frame_progress = 0.728585

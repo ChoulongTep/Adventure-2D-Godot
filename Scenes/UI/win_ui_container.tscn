@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://u214rqa6d650"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tie3s"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Win_UI_Container" type="Control"]
+layout_mode = 3
+anchor_left = -0.25
+anchor_top = -0.304
+anchor_right = 0.25
+anchor_bottom = 0.196
+offset_top = 0.320007
+offset_bottom = 0.319992
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = [960.0]
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -172.0
+offset_right = 330.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tie3s")
+
+[node name="Label" type="Label" parent="BG"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.607843, 0.933333, 0.203922, 1)
+theme_override_font_sizes/font_size = 55
+text = "Level Completed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Btns" type="Control" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.5
+offset_top = -50.0
+offset_right = 140.5
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Next_Level_btn" type="Button" parent="BG/Btns"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Next Level"
+
+[node name="Restart_btn" type="Button" parent="BG/Btns"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -25.0
+offset_right = 112.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="MainMenu_btn" type="Button" parent="BG/Btns"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = -480
+limit_top = -328
+limit_right = 480
+limit_bottom = 200

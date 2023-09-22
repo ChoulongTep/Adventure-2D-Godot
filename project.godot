@@ -12,13 +12,17 @@ config_version=5
 
 config/name="Adventure 2D"
 run/main_scene="res://Scenes/main_menu_scene.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.1", "C#", "Mobile")
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
+
+[dotnet]
+
+project/assembly_name="Adventure 2D"
 
 [input]
 

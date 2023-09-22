@@ -472,7 +472,7 @@ zoom = Vector2(2, 2)
 limit_left = -480
 limit_top = -328
 limit_right = 480
-limit_bottom = 195
+limit_bottom = 200
 
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
 position = Vector2(0, 4)

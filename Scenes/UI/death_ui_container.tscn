@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://diouluwmhppd6"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/death_ui_script.gd" id="1_odjpu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jnt6"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Death_UI_Container" type="Control"]
+layout_mode = 3
+anchor_left = -0.25
+anchor_top = -0.304
+anchor_right = 0.25
+anchor_bottom = 0.196
+offset_top = 0.320007
+offset_bottom = 0.319992
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_odjpu")
+metadata/_edit_horizontal_guides_ = [-836.0]
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -172.0
+offset_right = 330.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jnt6")
+
+[node name="Label" type="Label" parent="BG"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "You are Dead"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart_btn" type="Button" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -25.0
+offset_right = 124.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="MainMenu_btn" type="Button" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = 53.0
+offset_right = 99.5
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = -480
+limit_top = -328
+limit_right = 480
+limit_bottom = 200
+
+[connection signal="pressed" from="BG/Restart_btn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="BG/MainMenu_btn" to="." method="_on_main_menu_btn_pressed"]
